@@ -1,0 +1,100 @@
+/*
+ * JB Advisory — Global Business Network
+ * Theme tokens: single source of truth for the approved palette and type scale.
+ * Consumed by both application CSS and the Mapbox style builder (map/mapStyle.ts
+ * reads these same hex values so the map and UI never drift apart).
+ */
+
+:root {
+  /* Approved palette (Development Brief V1, section 1) */
+  --jba-color-nav-rail: #1e0032;
+  --jba-color-panel: #291d36;
+  --jba-color-background: #17151d;
+  --jba-color-map-ocean: #252633;
+  --jba-color-map-land: #444251;
+  --jba-color-text-primary: #f4f1f7;
+  --jba-color-text-secondary: #b9b0c4;
+  --jba-color-border: #493b55;
+  --jba-color-accent: #48c7bf;
+
+  /* Derived states (not in the brief; kept close to the accent/panel hues) */
+  --jba-color-accent-hover: #5cd6ce;
+  --jba-color-accent-muted: rgba(72, 199, 191, 0.16);
+  --jba-color-panel-raised: #322543;
+  --jba-color-overlay-scrim: rgba(23, 21, 29, 0.72);
+  --jba-color-danger: #e2685f;
+
+  /* Typography */
+  --jba-font-family: "Sarala", "Segoe UI", system-ui, sans-serif;
+  --jba-font-weight-regular: 400;
+  --jba-font-weight-bold: 700;
+
+  --jba-font-size-xs: 0.75rem;
+  --jba-font-size-sm: 0.875rem;
+  --jba-font-size-base: 1rem;
+  --jba-font-size-lg: 1.125rem;
+  --jba-font-size-xl: 1.5rem;
+  --jba-font-size-2xl: 1.875rem;
+
+  /* Spacing scale */
+  --jba-space-1: 4px;
+  --jba-space-2: 8px;
+  --jba-space-3: 12px;
+  --jba-space-4: 16px;
+  --jba-space-5: 24px;
+  --jba-space-6: 32px;
+  --jba-space-8: 48px;
+
+  /* Layout */
+  --jba-nav-rail-width: 88px;
+  --jba-filter-panel-width: 320px;
+  --jba-directory-panel-width: 400px;
+  --jba-radius-sm: 6px;
+  --jba-radius-md: 10px;
+  --jba-radius-lg: 16px;
+
+  /* Motion — subtle, per design principles */
+  --jba-transition-fast: 120ms ease-out;
+  --jba-transition-base: 200ms ease-out;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--jba-color-background);
+  color: var(--jba-color-text-primary);
+  font-family: var(--jba-font-family);
+  font-weight: var(--jba-font-weight-regular);
+  font-size: var(--jba-font-size-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  height: 100%;
+}
+
+.loading-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--jba-color-text-secondary);
+}
+
+a {
+  color: var(--jba-color-accent);
+}
+
+::selection {
+  background: var(--jba-color-accent-muted);
+}

@@ -1,0 +1,112 @@
+/* App shell layout — Checkpoint 1: nav rail + map workspace only. */
+
+.jba-shell {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* --- Nav rail --- */
+.jba-nav-rail {
+  width: var(--jba-nav-rail-width);
+  flex-shrink: 0;
+  background: var(--jba-color-nav-rail);
+  border-right: 1px solid var(--jba-color-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--jba-space-4) 0;
+}
+
+.jba-nav-rail__brand {
+  margin-bottom: var(--jba-space-6);
+  text-align: center;
+}
+
+.jba-nav-rail__brand-name {
+  font-weight: var(--jba-font-weight-bold);
+  font-size: var(--jba-font-size-xs);
+  letter-spacing: 0.04em;
+  color: var(--jba-color-text-primary);
+}
+
+.jba-nav-rail__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--jba-space-2);
+  flex: 1;
+}
+
+.jba-nav-rail__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--jba-space-1);
+  width: 64px;
+  padding: var(--jba-space-2) var(--jba-space-1);
+  background: transparent;
+  border: none;
+  border-radius: var(--jba-radius-md);
+  color: var(--jba-color-text-secondary);
+  cursor: pointer;
+  transition: background var(--jba-transition-fast), color var(--jba-transition-fast);
+  font-family: inherit;
+}
+
+.jba-nav-rail__item:hover:not(:disabled) {
+  background: var(--jba-color-panel);
+  color: var(--jba-color-text-primary);
+}
+
+.jba-nav-rail__item.is-active {
+  background: var(--jba-color-accent-muted);
+  color: var(--jba-color-accent);
+}
+
+.jba-nav-rail__item:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.jba-nav-rail__item-label {
+  font-size: 11px;
+}
+
+.jba-nav-rail__footer {
+  font-size: var(--jba-font-size-xs);
+  color: var(--jba-color-text-secondary);
+  text-align: center;
+  padding: 0 var(--jba-space-2);
+  max-width: 72px;
+}
+
+/* --- Map workspace --- */
+.jba-workspace {
+  flex: 1;
+  position: relative;
+  background: var(--jba-color-map-ocean);
+}
+
+.jba-map-container {
+  position: absolute;
+  inset: 0;
+}
+
+.jba-token-notice {
+  position: absolute;
+  top: var(--jba-space-4);
+  left: var(--jba-space-4);
+  z-index: 5;
+  background: var(--jba-color-panel);
+  border: 1px solid var(--jba-color-border);
+  border-radius: var(--jba-radius-md);
+  padding: var(--jba-space-3) var(--jba-space-4);
+  color: var(--jba-color-text-primary);
+  font-size: var(--jba-font-size-sm);
+  max-width: 360px;
+}
+
+.jba-token-notice strong {
+  color: var(--jba-color-danger);
+}
