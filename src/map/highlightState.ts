@@ -14,10 +14,24 @@ import { palette } from "@/theme/palette";
 export interface HighlightState {
   hoveredSubregionCode: string | null;
   selectedSubregionCode: string | null;
+  /**
+   * Regions selected in the Checkpoint 3 filter panel (independent of
+   * hover/click-to-navigate selection above). Rendered as a lighter,
+   * sustained accent tint so filtering a region reads clearly on the map
+   * without being confused for — or overriding — the camera-fly
+   * click-selection, which stays a single region and still takes
+   * visual priority when the two overlap.
+   */
+  filterSelectedSubregionCodes: Set<string>;
 }
 
 const SELECTED_OPACITY = 0.78;
 const HOVER_OPACITY = 0.5;
+const FILTER_SELECTED_OPACITY = 0.38;
+
+function isIn(code: string | null, set: Set<string>): boolean {
+  return code !== null && set.has(code);
+}
 
 export function buildFillColorExpression(state: HighlightState): Expression {
   return [
@@ -25,6 +39,8 @@ export function buildFillColorExpression(state: HighlightState): Expression {
     ["==", ["get", "subregionCode"], state.selectedSubregionCode ?? "__none__"],
     palette.accent,
     ["==", ["get", "subregionCode"], state.hoveredSubregionCode ?? "__none__"],
+    palette.accent,
+    ["in", ["get", "subregionCode"], ["literal", [...state.filterSelectedSubregionCodes]]],
     palette.accent,
     palette.mapLand,
   ];
@@ -37,6 +53,8 @@ export function buildFillOpacityExpression(state: HighlightState): Expression {
     SELECTED_OPACITY,
     ["==", ["get", "subregionCode"], state.hoveredSubregionCode ?? "__none__"],
     HOVER_OPACITY,
+    ["in", ["get", "subregionCode"], ["literal", [...state.filterSelectedSubregionCodes]]],
+    FILTER_SELECTED_OPACITY,
     1,
   ];
 }
@@ -48,6 +66,8 @@ export function buildLineColorExpression(state: HighlightState): Expression {
     palette.accent,
     ["==", ["get", "subregionCode"], state.hoveredSubregionCode ?? "__none__"],
     palette.accentHover,
+    ["in", ["get", "subregionCode"], ["literal", [...state.filterSelectedSubregionCodes]]],
+    palette.accent,
     palette.border,
   ];
 }
@@ -59,6 +79,11 @@ export function buildLineWidthExpression(state: HighlightState): Expression {
     1.5,
     ["==", ["get", "subregionCode"], state.hoveredSubregionCode ?? "__none__"],
     1.1,
+    ["in", ["get", "subregionCode"], ["literal", [...state.filterSelectedSubregionCodes]]],
+    1.1,
     0.5,
   ];
 }
+
+// isIn is exported for potential reuse by callers inspecting state directly (e.g. tests).
+export { isIn };

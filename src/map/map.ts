@@ -4,16 +4,27 @@ import { appConfig } from "@/config/app.config";
 import { buildBaseStyle } from "@/map/mapStyle";
 import { loadCountryFeatures } from "@/data/geo/loadCountries";
 import { addCountryLayers } from "@/map/countryLayers";
-import { wireRegionInteractions, type RegionInteractionCallbacks } from "@/map/interactions";
+import { wireRegionInteractions, type RegionInteractionCallbacks, type RegionInteractionHandle } from "@/map/interactions";
 import { GlobalViewControl } from "@/map/GlobalViewControl";
+import { addBusinessMarkerLayers, type BusinessMarkerCallbacks, type BusinessMarkerHandle } from "@/map/businessMarkers";
+import type { Business } from "@/data/business-types";
+
+export interface MapReadyHandle {
+  markers: BusinessMarkerHandle;
+  regions: RegionInteractionHandle;
+}
 
 export interface MapInitResult {
   map: mapboxgl.Map;
   tokenConfigured: boolean;
+  /** Resolves once the style + country/business layers are added (map "load" has fired). */
+  ready: Promise<MapReadyHandle>;
 }
 
 export interface MapInitOptions {
   interactionCallbacks?: RegionInteractionCallbacks;
+  businesses?: Business[];
+  businessCallbacks?: BusinessMarkerCallbacks;
 }
 
 /**
@@ -48,12 +59,19 @@ export function initMap(container: HTMLElement, options: MapInitOptions = {}): M
     console.error("[jba:map-error]", e.error);
   });
 
+  let resolveReady: (handle: MapReadyHandle) => void;
+  const ready = new Promise<MapReadyHandle>((resolve) => {
+    resolveReady = resolve;
+  });
+
   map.on("load", () => {
     const countries = loadCountryFeatures();
     addCountryLayers(map, countries);
     const interactions = wireRegionInteractions(map, options.interactionCallbacks);
     map.addControl(new GlobalViewControl(() => interactions.clearSelection()), "top-right");
+    const markerHandle = addBusinessMarkerLayers(map, options.businesses ?? [], options.businessCallbacks);
+    resolveReady({ markers: markerHandle, regions: interactions });
   });
 
-  return { map, tokenConfigured };
+  return { map, tokenConfigured, ready };
 }

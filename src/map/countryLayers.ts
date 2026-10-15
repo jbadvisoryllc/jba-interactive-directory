@@ -19,7 +19,11 @@ import {
 import type { CountryFeatureProperties } from "@/data/geo/loadCountries";
 import subregionsData from "@/data/geo/m49-subregions.json";
 
-const INITIAL_STATE: HighlightState = { hoveredSubregionCode: null, selectedSubregionCode: null };
+const INITIAL_STATE: HighlightState = {
+  hoveredSubregionCode: null,
+  selectedSubregionCode: null,
+  filterSelectedSubregionCodes: new Set(),
+};
 
 function buildLabelFeatureCollection(): FeatureCollection {
   return {

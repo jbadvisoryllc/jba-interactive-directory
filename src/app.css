@@ -81,11 +81,643 @@
   max-width: 72px;
 }
 
+/* --- Main content region (filter panel + workspace + directory) --- */
+.jba-main {
+  flex: 1;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* --- Filter panel --- */
+.jba-filter-panel-wrap {
+  flex-shrink: 0;
+  width: var(--jba-filter-panel-width);
+  background: var(--jba-color-panel);
+  border-right: 1px solid var(--jba-color-border);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: width var(--jba-transition-base);
+  overflow: hidden;
+}
+
+.jba-filter-panel-wrap.is-collapsed {
+  width: 20px;
+}
+
+.jba-filter-panel-wrap.is-collapsed .jba-filter-panel {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.jba-filter-collapse-btn {
+  position: absolute;
+  top: var(--jba-space-3);
+  right: -14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--jba-color-border);
+  background: var(--jba-color-panel-raised);
+  color: var(--jba-color-text-secondary);
+  cursor: pointer;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--jba-transition-fast), background var(--jba-transition-fast);
+}
+
+.jba-filter-collapse-btn:hover {
+  color: var(--jba-color-accent);
+  background: var(--jba-color-panel);
+}
+
+.jba-filter-panel {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--jba-space-4);
+  transition: opacity var(--jba-transition-fast);
+}
+
+.jba-filter-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--jba-space-3);
+}
+
+.jba-filter-panel__title {
+  font-size: var(--jba-font-size-lg);
+  font-weight: var(--jba-font-weight-bold);
+  margin: 0;
+}
+
+.jba-filter-reset {
+  font-size: var(--jba-font-size-xs);
+  color: var(--jba-color-accent);
+  background: transparent;
+  border: 1px solid var(--jba-color-border);
+  border-radius: var(--jba-radius-sm);
+  padding: var(--jba-space-1) var(--jba-space-2);
+  cursor: pointer;
+}
+
+.jba-filter-reset:disabled {
+  color: var(--jba-color-text-secondary);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.jba-filter-section {
+  border-top: 1px solid var(--jba-color-border);
+  padding: var(--jba-space-2) 0;
+}
+
+.jba-filter-section__summary {
+  cursor: pointer;
+  font-size: var(--jba-font-size-sm);
+  font-weight: var(--jba-font-weight-bold);
+  color: var(--jba-color-text-primary);
+  padding: var(--jba-space-1) 0;
+  list-style: none;
+}
+
+.jba-filter-section__summary::-webkit-details-marker {
+  display: none;
+}
+
+.jba-filter-section__summary::before {
+  content: "▸";
+  display: inline-block;
+  width: 1em;
+  color: var(--jba-color-text-secondary);
+  transition: transform var(--jba-transition-fast);
+}
+
+.jba-filter-section[open] > .jba-filter-section__summary::before {
+  transform: rotate(90deg);
+}
+
+.jba-filter-section__body {
+  padding-top: var(--jba-space-2);
+}
+
+.jba-filter-group {
+  margin-bottom: var(--jba-space-2);
+}
+
+.jba-filter-group__label {
+  font-size: var(--jba-font-size-xs);
+  color: var(--jba-color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: var(--jba-space-2) 0 var(--jba-space-1);
+}
+
+.jba-filter-row {
+  display: flex;
+  align-items: center;
+  gap: var(--jba-space-2);
+  padding: var(--jba-space-1) var(--jba-space-1);
+  border-radius: var(--jba-radius-sm);
+  cursor: pointer;
+  font-size: var(--jba-font-size-sm);
+}
+
+.jba-filter-row:hover {
+  background: var(--jba-color-panel-raised);
+}
+
+.jba-filter-row.is-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.jba-filter-row input[type="checkbox"] {
+  accent-color: var(--jba-color-accent);
+}
+
+.jba-filter-row__label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jba-filter-row__count {
+  font-size: var(--jba-font-size-xs);
+  color: var(--jba-color-text-secondary);
+  min-width: 1.5em;
+  text-align: right;
+}
+
+.jba-filter-service-search {
+  width: 100%;
+  margin-bottom: var(--jba-space-2);
+  padding: var(--jba-space-2);
+  background: var(--jba-color-background);
+  border: 1px solid var(--jba-color-border);
+  border-radius: var(--jba-radius-sm);
+  color: var(--jba-color-text-primary);
+  font-family: inherit;
+  font-size: var(--jba-font-size-sm);
+}
+
+.jba-filter-service-list {
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.jba-filter-empty {
+  font-size: var(--jba-font-size-xs);
+  color: var(--jba-color-text-secondary);
+  padding: var(--jba-space-2) 0;
+}
+
 /* --- Map workspace --- */
 .jba-workspace {
   flex: 1;
   position: relative;
   background: var(--jba-color-map-ocean);
+  min-width: 0;
+}
+
+.jba-main--list-view .jba-workspace {
+  display: none;
+}
+
+.jba-main--list-view .jba-directory-wrap {
+  flex: 1;
+  max-width: none;
+  border-left: none;
+}
+
+.jba-main--list-view .jba-directory-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--jba-space-3);
+  align-items: start;
+}
+
+.jba-main--list-view .jba-business-card.is-selected {
+  grid-column: 1 / -1;
+}
+
+/* --- Directory panel --- */
+.jba-directory-wrap {
+  flex-shrink: 0;
+  width: var(--jba-directory-panel-width);
+  max-width: var(--jba-directory-panel-width);
+  background: var(--jba-color-panel);
+  border-left: 1px solid var(--jba-color-border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.jba-directory-panel {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--jba-space-4);
+  display: flex;
+  flex-direction: column;
+}
+
+.jba-directory-panel__header {
+  margin-bottom: var(--jba-space-3);
+}
+
+.jba-directory-search__input,
+.jba-directory-sort {
+  width: 100%;
+  padding: var(--jba-space-2) var(--jba-space-3);
+  background: var(--jba-color-background);
+  border: 1px solid var(--jba-color-border);
+  border-radius: var(--jba-radius-sm);
+  color: var(--jba-color-text-primary);
+  font-family: inherit;
+  font-size: var(--jba-font-size-sm);
+}
+
+.jba-directory-controls {
+  margin-top: var(--jba-space-2);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.jba-directory-sort {
+  width: auto;
+}
+
+.jba-directory-count {
+  font-size: var(--jba-font-size-xs);
+  color: var(--jba-color-text-secondary);
+  margin-bottom: var(--jba-space-3);
+}
+
+.jba-directory-empty {
+  color: var(--jba-color-text-secondary);
+  font-size: var(--jba-font-size-sm);
+  text-align: center;
+  padding: var(--jba-space-6) var(--jba-space-3);
+}
+
+.jba-directory-empty__reset {
+  margin-top: var(--jba-space-3);
+  background: var(--jba-color-accent-muted);
+  color: var(--jba-color-accent);
+  border: 1px solid var(--jba-color-accent);
+  border-radius: var(--jba-radius-sm);
+  padding: var(--jba-space-2) var(--jba-space-4);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.jba-directory-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--jba-space-2);
+  flex: 1;
+}
+
+.jba-business-card {
+  background: var(--jba-color-panel-raised);
+  border: 1px solid var(--jba-color-border);
+  border-radius: var(--jba-radius-md);
+  overflow: hidden;
+}
+
+.jba-business-card.is-selected {
+  border-color: var(--jba-color-accent);
+}
+
+.jba-business-card__summary {
+  display: flex;
+  align-items: center;
+  gap: var(--jba-space-3);
+  padding: var(--jba-space-3);
+  cursor: pointer;
+}
+
+.jba-business-card__logo {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--jba-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--jba-font-weight-bold);
+  color: #17151d;
+  font-size: var(--jba-font-size-sm);
+}
+
+.jba-business-card__meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.jba-business-card__name {
+  font-weight: var(--jba-font-weight-bold);
+  font-size: var(--jba-font-size-sm);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jba-business-card__sub {
+  font-size: var(--jba-font-size-xs);
+  color: var(--jba-color-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jba-business-card__chevron {
+  color: var(--jba-color-text-secondary);
+  flex-shrink: 0;
+}
+
+.jba-business-card__detail {
+  padding: 0 var(--jba-space-3) var(--jba-space-3);
+  border-top: 1px solid var(--jba-color-border);
+}
+
+.jba-business-card__description {
+  font-size: var(--jba-font-size-sm);
+  color: var(--jba-color-text-secondary);
+  margin: var(--jba-space-3) 0;
+}
+
+.jba-business-card__section-label {
+  font-size: var(--jba-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--jba-color-text-secondary);
+  margin: var(--jba-space-3) 0 var(--jba-space-1);
+}
+
+.jba-business-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--jba-space-1);
+}
+
+.jba-chip {
+  font-size: var(--jba-font-size-xs);
+  background: var(--jba-color-accent-muted);
+  color: var(--jba-color-accent);
+  border-radius: var(--jba-radius-sm);
+  padding: 2px var(--jba-space-2);
+}
+
+.jba-chip--muted {
+  background: var(--jba-color-panel);
+  color: var(--jba-color-text-secondary);
+}
+
+.jba-business-card__facts,
+.jba-business-card__contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--jba-space-4);
+  margin-top: var(--jba-space-3);
+}
+
+.jba-business-card__fact {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--jba-font-size-sm);
+}
+
+.jba-business-card__fact-label {
+  font-size: var(--jba-font-size-xs);
+  color: var(--jba-color-text-secondary);
+}
+
+.jba-directory-pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--jba-space-3);
+  margin-top: var(--jba-space-4);
+}
+
+.jba-directory-pager button {
+  background: var(--jba-color-panel-raised);
+  border: 1px solid var(--jba-color-border);
+  color: var(--jba-color-text-primary);
+  border-radius: var(--jba-radius-sm);
+  padding: var(--jba-space-1) var(--jba-space-3);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.jba-directory-pager button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.jba-directory-pager__label {
+  font-size: var(--jba-font-size-xs);
+  color: var(--jba-color-text-secondary);
+}
+
+.jba-data-disclosure {
+  font-size: var(--jba-font-size-xs);
+  color: var(--jba-color-text-secondary);
+  border-top: 1px solid var(--jba-color-border);
+  padding: var(--jba-space-3) var(--jba-space-4);
+}
+
+/* --- Mobile bottom nav / drawer / sheet --- */
+.jba-mobile-nav {
+  display: none;
+}
+
+.jba-mobile-scrim {
+  display: none;
+}
+
+.jba-sheet-handle {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .jba-shell {
+    flex-direction: column;
+  }
+
+  /* Desktop vertical nav rail is replaced by the bottom nav below. */
+  .jba-nav-rail {
+    display: none;
+  }
+
+  .jba-main {
+    flex: 1;
+    position: relative;
+    padding-bottom: 56px; /* clears the fixed bottom nav */
+  }
+
+  /* --- Bottom nav --- */
+  .jba-mobile-nav {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 56px;
+    background: var(--jba-color-nav-rail);
+    border-top: 1px solid var(--jba-color-border);
+    z-index: 20;
+  }
+
+  .jba-mobile-nav__btn {
+    flex: 1;
+    min-height: 48px;
+    background: transparent;
+    border: none;
+    color: var(--jba-color-text-secondary);
+    font-family: inherit;
+    font-size: var(--jba-font-size-sm);
+    cursor: pointer;
+  }
+
+  .jba-mobile-nav__btn.is-active {
+    color: var(--jba-color-accent);
+  }
+
+  /* --- Filter panel becomes a slide-in drawer --- */
+  .jba-filter-panel-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 56px;
+    width: min(85vw, 340px);
+    max-width: none;
+    z-index: 30;
+    transform: translateX(-100%);
+    transition: transform var(--jba-transition-base);
+    border-right: 1px solid var(--jba-color-border);
+  }
+
+  .jba-filter-panel-wrap.is-collapsed {
+    width: min(85vw, 340px);
+  }
+
+  .jba-filter-panel-wrap.is-collapsed .jba-filter-panel {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .jba-filter-drawer-open .jba-filter-panel-wrap {
+    transform: translateX(0);
+  }
+
+  .jba-filter-collapse-btn {
+    right: var(--jba-space-3);
+    top: var(--jba-space-3);
+  }
+
+  .jba-filter-drawer-open .jba-mobile-scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    bottom: 56px;
+    background: var(--jba-color-overlay-scrim);
+    z-index: 25;
+  }
+
+  /* --- Map workspace fills the screen; directory becomes a pull-up sheet --- */
+  .jba-workspace {
+    position: absolute;
+    inset: 0;
+  }
+
+  .jba-main--list-view .jba-workspace {
+    display: none;
+  }
+
+  .jba-directory-wrap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    max-width: none;
+    border-left: none;
+    border-top: 1px solid var(--jba-color-border);
+    border-radius: var(--jba-radius-lg) var(--jba-radius-lg) 0 0;
+    max-height: calc(100% - 24px);
+    height: 160px;
+    transition: height var(--jba-transition-base);
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .jba-directory-wrap.is-sheet-expanded {
+    height: 65%;
+  }
+
+  .jba-main--list-view .jba-directory-wrap {
+    position: absolute;
+    inset: 0;
+    height: auto;
+    border-radius: 0;
+    border-top: none;
+    box-shadow: none;
+  }
+
+  .jba-sheet-handle {
+    display: flex;
+    justify-content: center;
+    padding: var(--jba-space-2) 0;
+    background: transparent;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .jba-main--list-view .jba-sheet-handle {
+    display: none;
+  }
+
+  .jba-sheet-handle__grip {
+    width: 36px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--jba-color-border);
+  }
+
+  .jba-directory-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .jba-directory-panel {
+    padding: 0 var(--jba-space-4) var(--jba-space-4);
+  }
+
+  /* Larger touch targets on mobile. */
+  .jba-filter-row,
+  .jba-directory-pager button,
+  .jba-mobile-nav__btn {
+    min-height: 44px;
+  }
+
+  .jba-business-card__summary {
+    min-height: 56px;
+  }
+
+  /* Responsive map controls: scale down the Mapbox control cluster so it
+     doesn't crowd a small screen. */
+  .mapboxgl-ctrl-group button {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 /*

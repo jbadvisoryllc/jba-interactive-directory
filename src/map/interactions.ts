@@ -18,6 +18,8 @@ export interface RegionInteractionCallbacks {
 export interface RegionInteractionHandle {
   /** Clears the current selection highlight without moving the camera. */
   clearSelection: () => void;
+  /** Updates which regions render with the filter-panel accent tint (see highlightState.ts). */
+  setFilterRegions: (codes: Set<string>) => void;
 }
 
 /**
@@ -32,7 +34,11 @@ export function wireRegionInteractions(
   map: mapboxgl.Map,
   callbacks: RegionInteractionCallbacks = {}
 ): RegionInteractionHandle {
-  const state: HighlightState = { hoveredSubregionCode: null, selectedSubregionCode: null };
+  const state: HighlightState = {
+    hoveredSubregionCode: null,
+    selectedSubregionCode: null,
+    filterSelectedSubregionCodes: new Set(),
+  };
 
   function applyState() {
     map.setPaintProperty(LAYER_COUNTRIES_FILL, "fill-color", buildFillColorExpression(state));
@@ -73,6 +79,10 @@ export function wireRegionInteractions(
   return {
     clearSelection: () => {
       state.selectedSubregionCode = null;
+      applyState();
+    },
+    setFilterRegions: (codes: Set<string>) => {
+      state.filterSelectedSubregionCodes = codes;
       applyState();
     },
   };

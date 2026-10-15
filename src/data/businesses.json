@@ -1,0 +1,673 @@
+{
+  "_comment": "Fictional demonstration data for the JB Advisory Global Business Network prototype. No company listed here represents a real business, living or dead. Headquarters coordinates are approximate city-center points for map placement; serviceCoverage is independent of headquarters and may list countries and/or whole M49 regions. Industry color keys below are reused in src/theme/industryColors.ts for card/monogram styling — a small curated set, not a rainbow.",
+  "industryColors": {
+    "Construction": "#c7a548",
+    "Energy": "#c76f4f",
+    "Logistics": "#5c8ac7",
+    "Manufacturing": "#8a6fc7",
+    "Technology": "#48c7bf",
+    "Professional Services": "#a65c8a",
+    "Marine Services": "#4f8fa6"
+  },
+  "businesses": [
+    {
+      "id": "biz-001",
+      "name": "Meridian Build Group",
+      "industry": "Construction",
+      "services": ["Commercial construction", "Infrastructure project management", "Design-build"],
+      "description": "A design-build contractor delivering commercial and civic infrastructure projects across the Gulf Coast and the wider Caribbean basin.",
+      "headquarters": { "countryIso3": "USA", "countryName": "United States", "city": "Houston", "coordinates": [-95.37, 29.76], "subregionCode": "021", "subregionName": "Northern America" },
+      "serviceCoverage": [
+        { "type": "region", "code": "021", "name": "Northern America" },
+        { "type": "region", "code": "029", "name": "Caribbean" }
+      ],
+      "logo": { "type": "monogram", "initials": "MB", "color": "#c7a548" },
+      "contact": { "website": "www.meridianbuildgroup.example", "email": "info@meridianbuildgroup.example" },
+      "founded": 1998,
+      "employeeRange": "500-1000"
+    },
+    {
+      "id": "biz-002",
+      "name": "Atlas Infrastructure Partners",
+      "industry": "Construction",
+      "services": ["Road and bridge construction", "Port infrastructure", "Materials sourcing"],
+      "description": "Regional infrastructure builder specializing in transport corridors and port facilities across West and Central Africa.",
+      "headquarters": { "countryIso3": "NGA", "countryName": "Nigeria", "city": "Lagos", "coordinates": [3.39, 6.52], "subregionCode": "011", "subregionName": "Western Africa" },
+      "serviceCoverage": [
+        { "type": "region", "code": "011", "name": "Western Africa" },
+        { "type": "region", "code": "017", "name": "Middle Africa" }
+      ],
+      "logo": { "type": "monogram", "initials": "AI", "color": "#c7a548" },
+      "contact": { "website": "www.atlasinfrapartners.example" },
+      "founded": 2004,
+      "employeeRange": "250-500"
+    },
+    {
+      "id": "biz-003",
+      "name": "Nordkross Bygg AS",
+      "industry": "Construction",
+      "services": ["Residential development", "Sustainable building materials", "Retrofit engineering"],
+      "description": "A Scandinavian builder known for low-carbon residential developments and energy-efficient retrofits.",
+      "headquarters": { "countryIso3": "NOR", "countryName": "Norway", "city": "Oslo", "coordinates": [10.75, 59.91], "subregionCode": "154", "subregionName": "Northern Europe" },
+      "serviceCoverage": [
+        { "type": "region", "code": "154", "name": "Northern Europe" },
+        { "type": "region", "code": "155", "name": "Western Europe" }
+      ],
+      "logo": { "type": "monogram", "initials": "NB", "color": "#c7a548" },
+      "contact": { "website": "www.nordkrossbygg.example", "phone": "+47 22 00 00 00" },
+      "founded": 1987,
+      "employeeRange": "100-250"
+    },
+    {
+      "id": "biz-004",
+      "name": "Shenlong Construction Group",
+      "industry": "Construction",
+      "services": ["High-rise construction", "Prefabricated modular building", "Urban redevelopment"],
+      "description": "Large-scale urban construction group with modular building facilities serving fast-growing metropolitan markets across East and Southeast Asia.",
+      "headquarters": { "countryIso3": "CHN", "countryName": "China", "city": "Shanghai", "coordinates": [121.47, 31.23], "subregionCode": "030", "subregionName": "Eastern Asia" },
+      "serviceCoverage": [
+        { "type": "region", "code": "030", "name": "Eastern Asia" },
+        { "type": "region", "code": "035", "name": "South-eastern Asia" }
+      ],
+      "logo": { "type": "monogram", "initials": "SC", "color": "#c7a548" },
+      "founded": 1992,
+      "employeeRange": "1000+"
+    },
+    {
+      "id": "biz-005",
+      "name": "Tarmac Horizon Engineering",
+      "industry": "Construction",
+      "services": ["Mining infrastructure", "Heavy civil engineering", "Site rehabilitation"],
+      "description": "Heavy civil engineering firm supporting mining and industrial infrastructure projects across Southern and Eastern Africa.",
+      "headquarters": { "countryIso3": "ZAF", "countryName": "South Africa", "city": "Johannesburg", "coordinates": [28.05, -26.2], "subregionCode": "018", "subregionName": "Southern Africa" },
+      "serviceCoverage": [
+        { "type": "region", "code": "018", "name": "Southern Africa" },
+        { "type": "region", "code": "014", "name": "Eastern Africa" }
+      ],
+      "logo": { "type": "monogram", "initials": "TH", "color": "#c7a548" },
+      "contact": { "website": "www.tarmachorizon.example" },
+      "founded": 1976,
+      "employeeRange": "500-1000"
+    },
+    {
+      "id": "biz-006",
+      "name": "Rio Vantage Construtora",
+      "industry": "Construction",
+      "services": ["Residential and mixed-use development", "Structural engineering", "Project finance advisory"],
+      "description": "Mixed-use development firm building residential and commercial properties across major South American metropolitan centers.",
+      "headquarters": { "countryIso3": "BRA", "countryName": "Brazil", "city": "São Paulo", "coordinates": [-46.63, -23.55], "subregionCode": "005", "subregionName": "South America" },
+      "serviceCoverage": [
+        { "type": "region", "code": "005", "name": "South America" }
+      ],
+      "logo": { "type": "monogram", "initials": "RV", "color": "#c7a548" },
+      "founded": 2001,
+      "employeeRange": "250-500"
+    },
+
+    {
+      "id": "biz-007",
+      "name": "Vantage Point Energy",
+      "industry": "Energy",
+      "services": ["Oil and gas field services", "Pipeline integrity", "Carbon capture consulting"],
+      "description": "Field services and pipeline integrity provider supporting conventional and emerging low-carbon energy operators across North America.",
+      "headquarters": { "countryIso3": "CAN", "countryName": "Canada", "city": "Calgary", "coordinates": [-114.07, 51.05], "subregionCode": "021", "subregionName": "Northern America" },
+      "serviceCoverage": [
+        { "type": "region", "code": "021", "name": "Northern America" }
+      ],
+      "logo": { "type": "monogram", "initials": "VP", "color": "#c76f4f" },
+      "contact": { "website": "www.vantagepointenergy.example" },
+      "founded": 1983,
+      "employeeRange": "500-1000"
+    },
+    {
+      "id": "biz-008",
+      "name": "Sahara Solar Dynamics",
+      "industry": "Energy",
+      "services": ["Utility-scale solar development", "Grid-storage integration", "O&M services"],
+      "description": "Utility-scale solar developer leveraging North Africa's solar resource for domestic grids and planned export interconnections.",
+      "headquarters": { "countryIso3": "EGY", "countryName": "Egypt", "city": "Cairo", "coordinates": [31.24, 30.04], "subregionCode": "015", "subregionName": "Northern Africa" },
+      "serviceCoverage": [
+        { "type": "region", "code": "015", "name": "Northern Africa" },
+        { "type": "region", "code": "145", "name": "Western Asia" }
+      ],
+      "logo": { "type": "monogram", "initials": "SS", "color": "#c76f4f" },
+      "founded": 2012,
+      "employeeRange": "100-250"
+    },
+    {
+      "id": "biz-009",
+      "name": "Baltic Wind Partners",
+      "industry": "Energy",
+      "services": ["Offshore wind development", "Turbine logistics", "Environmental permitting"],
+      "description": "Offshore wind developer coordinating turbine logistics and permitting across the Baltic and North Sea coastlines.",
+      "headquarters": { "countryIso3": "POL", "countryName": "Poland", "city": "Gdansk", "coordinates": [18.65, 54.35], "subregionCode": "151", "subregionName": "Eastern Europe" },
+      "serviceCoverage": [
+        { "type": "region", "code": "151", "name": "Eastern Europe" },
+        { "type": "region", "code": "154", "name": "Northern Europe" }
+      ],
+      "logo": { "type": "monogram", "initials": "BW", "color": "#c76f4f" },
+      "contact": { "website": "www.balticwindpartners.example" },
+      "founded": 2015,
+      "employeeRange": "100-250"
+    },
+    {
+      "id": "biz-010",
+      "name": "Gulf Horizon Petrochemicals",
+      "industry": "Energy",
+      "services": ["Petrochemical processing", "LNG logistics", "Industrial feedstock supply"],
+      "description": "Petrochemical and LNG logistics group serving refiners and industrial buyers across the Gulf and South Asia.",
+      "headquarters": { "countryIso3": "QAT", "countryName": "Qatar", "city": "Doha", "coordinates": [51.53, 25.29], "subregionCode": "145", "subregionName": "Western Asia" },
+      "serviceCoverage": [
+        { "type": "region", "code": "145", "name": "Western Asia" },
+        { "type": "region", "code": "034", "name": "Southern Asia" }
+      ],
+      "logo": { "type": "monogram", "initials": "GH", "color": "#c76f4f" },
+      "founded": 1999,
+      "employeeRange": "1000+"
+    },
+    {
+      "id": "biz-011",
+      "name": "Kiwi Geothermal Holdings",
+      "industry": "Energy",
+      "services": ["Geothermal plant development", "Resource assessment", "Plant operations"],
+      "description": "Geothermal energy developer and operator with projects across New Zealand's volcanic zone and nearby Pacific island grids.",
+      "headquarters": { "countryIso3": "NZL", "countryName": "New Zealand", "city": "Auckland", "coordinates": [174.76, -36.85], "subregionCode": "053", "subregionName": "Australia and New Zealand" },
+      "serviceCoverage": [
+        { "type": "region", "code": "053", "name": "Australia and New Zealand" },
+        { "type": "region", "code": "054", "name": "Melanesia" }
+      ],
+      "logo": { "type": "monogram", "initials": "KG", "color": "#c76f4f" },
+      "founded": 1991,
+      "employeeRange": "250-500"
+    },
+    {
+      "id": "biz-012",
+      "name": "Andes Hydro Partners",
+      "industry": "Energy",
+      "services": ["Run-of-river hydro development", "Dam safety consulting", "Transmission planning"],
+      "description": "Hydropower developer and transmission planning consultancy working across the Andean corridor and Central American highlands.",
+      "headquarters": { "countryIso3": "CHL", "countryName": "Chile", "city": "Santiago", "coordinates": [-70.65, -33.45], "subregionCode": "005", "subregionName": "South America" },
+      "serviceCoverage": [
+        { "type": "region", "code": "005", "name": "South America" },
+        { "type": "region", "code": "013", "name": "Central America" }
+      ],
+      "logo": { "type": "monogram", "initials": "AH", "color": "#c76f4f" },
+      "founded": 1988,
+      "employeeRange": "250-500"
+    },
+
+    {
+      "id": "biz-013",
+      "name": "Meridian Freight Systems",
+      "industry": "Logistics",
+      "services": ["Freight forwarding", "Customs brokerage", "Warehousing"],
+      "description": "Pan-European freight forwarder operating bonded warehouses and customs brokerage out of the Port of Rotterdam.",
+      "headquarters": { "countryIso3": "NLD", "countryName": "Netherlands", "city": "Rotterdam", "coordinates": [4.48, 51.92], "subregionCode": "155", "subregionName": "Western Europe" },
+      "serviceCoverage": [
+        { "type": "region", "code": "155", "name": "Western Europe" },
+        { "type": "region", "code": "154", "name": "Northern Europe" },
+        { "type": "region", "code": "039", "name": "Southern Europe" }
+      ],
+      "logo": { "type": "monogram", "initials": "MF", "color": "#5c8ac7" },
+      "contact": { "website": "www.meridianfreightsystems.example" },
+      "founded": 1965,
+      "employeeRange": "1000+"
+    },
+    {
+      "id": "biz-014",
+      "name": "Pacific Rim Logistics",
+      "industry": "Logistics",
+      "services": ["Container shipping coordination", "Transshipment hub management", "Supply chain consulting"],
+      "description": "Container logistics coordinator running transshipment operations through Singapore's port complex for intra-Asian trade.",
+      "headquarters": { "countryIso3": "SGP", "countryName": "Singapore", "city": "Singapore", "coordinates": [103.82, 1.35], "subregionCode": "035", "subregionName": "South-eastern Asia" },
+      "serviceCoverage": [
+        { "type": "region", "code": "035", "name": "South-eastern Asia" },
+        { "type": "region", "code": "030", "name": "Eastern Asia" },
+        { "type": "region", "code": "034", "name": "Southern Asia" }
+      ],
+      "logo": { "type": "monogram", "initials": "PR", "color": "#5c8ac7" },
+      "founded": 1979,
+      "employeeRange": "500-1000"
+    },
+    {
+      "id": "biz-015",
+      "name": "Trans-Sahara Cargo Alliance",
+      "industry": "Logistics",
+      "services": ["Cross-border trucking", "Bonded transit", "Last-mile distribution"],
+      "description": "Overland cargo alliance moving bonded freight across the Maghreb and into West African inland markets.",
+      "headquarters": { "countryIso3": "MAR", "countryName": "Morocco", "city": "Casablanca", "coordinates": [-7.59, 33.57], "subregionCode": "015", "subregionName": "Northern Africa" },
+      "serviceCoverage": [
+        { "type": "region", "code": "015", "name": "Northern Africa" },
+        { "type": "region", "code": "011", "name": "Western Africa" }
+      ],
+      "logo": { "type": "monogram", "initials": "TC", "color": "#5c8ac7" },
+      "founded": 2006,
+      "employeeRange": "100-250"
+    },
+    {
+      "id": "biz-016",
+      "name": "Caribbean Blue Shipping",
+      "industry": "Logistics",
+      "services": ["Inter-island shipping", "Port agency services", "Reefer cargo handling"],
+      "description": "Inter-island shipping line and port agency connecting Caribbean economies to Gulf Coast and Central American ports.",
+      "headquarters": { "countryIso3": "JAM", "countryName": "Jamaica", "city": "Kingston", "coordinates": [-76.79, 17.97], "subregionCode": "029", "subregionName": "Caribbean" },
+      "serviceCoverage": [
+        { "type": "region", "code": "029", "name": "Caribbean" },
+        { "type": "region", "code": "021", "name": "Northern America" },
+        { "type": "region", "code": "013", "name": "Central America" }
+      ],
+      "logo": { "type": "monogram", "initials": "CB", "color": "#5c8ac7" },
+      "contact": { "website": "www.caribbeanblueshipping.example" },
+      "founded": 1972,
+      "employeeRange": "250-500"
+    },
+    {
+      "id": "biz-017",
+      "name": "Silk Route Transit Group",
+      "industry": "Logistics",
+      "services": ["Rail freight coordination", "Overland transit corridors", "Bonded warehousing"],
+      "description": "Overland transit operator linking Central Asian rail corridors to East Asian and Middle Eastern trade markets.",
+      "headquarters": { "countryIso3": "KAZ", "countryName": "Kazakhstan", "city": "Almaty", "coordinates": [76.89, 43.24], "subregionCode": "143", "subregionName": "Central Asia" },
+      "serviceCoverage": [
+        { "type": "region", "code": "143", "name": "Central Asia" },
+        { "type": "region", "code": "030", "name": "Eastern Asia" },
+        { "type": "region", "code": "145", "name": "Western Asia" }
+      ],
+      "logo": { "type": "monogram", "initials": "SR", "color": "#5c8ac7" },
+      "founded": 1997,
+      "employeeRange": "100-250"
+    },
+    {
+      "id": "biz-018",
+      "name": "Austral Freight Network",
+      "industry": "Logistics",
+      "services": ["Domestic air freight", "Island-hopper cargo charters", "Cold chain logistics"],
+      "description": "Freight network serving Australia and the scattered island economies of the South Pacific with scheduled cargo charters.",
+      "headquarters": { "countryIso3": "AUS", "countryName": "Australia", "city": "Sydney", "coordinates": [151.21, -33.87], "subregionCode": "053", "subregionName": "Australia and New Zealand" },
+      "serviceCoverage": [
+        { "type": "region", "code": "053", "name": "Australia and New Zealand" },
+        { "type": "region", "code": "054", "name": "Melanesia" },
+        { "type": "region", "code": "057", "name": "Micronesia" },
+        { "type": "region", "code": "061", "name": "Polynesia" }
+      ],
+      "logo": { "type": "monogram", "initials": "AF", "color": "#5c8ac7" },
+      "founded": 1984,
+      "employeeRange": "250-500"
+    },
+
+    {
+      "id": "biz-019",
+      "name": "Ironbridge Precision Manufacturing",
+      "industry": "Manufacturing",
+      "services": ["Precision metal fabrication", "CNC machining", "Supply chain quality audits"],
+      "description": "Precision fabrication house supplying machined components to automotive and aerospace tier-one suppliers across Britain and the near continent.",
+      "headquarters": { "countryIso3": "GBR", "countryName": "United Kingdom", "city": "Birmingham", "coordinates": [-1.89, 52.48], "subregionCode": "154", "subregionName": "Northern Europe" },
+      "serviceCoverage": [
+        { "type": "region", "code": "154", "name": "Northern Europe" },
+        { "type": "region", "code": "155", "name": "Western Europe" }
+      ],
+      "logo": { "type": "monogram", "initials": "IP", "color": "#8a6fc7" },
+      "contact": { "website": "www.ironbridgeprecision.example" },
+      "founded": 1954,
+      "employeeRange": "250-500"
+    },
+    {
+      "id": "biz-020",
+      "name": "Hanbando Industrial Co.",
+      "industry": "Manufacturing",
+      "services": ["Shipbuilding components", "Steel plate processing", "Industrial automation"],
+      "description": "Heavy industrial manufacturer supplying steel components and automation systems to East Asian shipyards.",
+      "headquarters": { "countryIso3": "KOR", "countryName": "South Korea", "city": "Busan", "coordinates": [129.08, 35.18], "subregionCode": "030", "subregionName": "Eastern Asia" },
+      "serviceCoverage": [
+        { "type": "region", "code": "030", "name": "Eastern Asia" }
+      ],
+      "logo": { "type": "monogram", "initials": "HI", "color": "#8a6fc7" },
+      "founded": 1969,
+      "employeeRange": "1000+"
+    },
+    {
+      "id": "biz-021",
+      "name": "Veracruz Componentes Industriales",
+      "industry": "Manufacturing",
+      "services": ["Automotive component assembly", "Injection molding", "Just-in-time delivery"],
+      "description": "Automotive component assembler operating maquiladora plants that feed just-in-time delivery schedules across North America.",
+      "headquarters": { "countryIso3": "MEX", "countryName": "Mexico", "city": "Monterrey", "coordinates": [-100.31, 25.69], "subregionCode": "013", "subregionName": "Central America" },
+      "serviceCoverage": [
+        { "type": "region", "code": "013", "name": "Central America" },
+        { "type": "region", "code": "021", "name": "Northern America" }
+      ],
+      "logo": { "type": "monogram", "initials": "VC", "color": "#8a6fc7" },
+      "founded": 1981,
+      "employeeRange": "500-1000"
+    },
+    {
+      "id": "biz-022",
+      "name": "Kampala Textile Mills",
+      "industry": "Manufacturing",
+      "services": ["Cotton textile production", "Garment finishing", "Export packaging"],
+      "description": "Vertically integrated textile mill processing regional cotton into finished garments for East and Central African markets.",
+      "headquarters": { "countryIso3": "UGA", "countryName": "Uganda", "city": "Kampala", "coordinates": [32.58, 0.35], "subregionCode": "014", "subregionName": "Eastern Africa" },
+      "serviceCoverage": [
+        { "type": "region", "code": "014", "name": "Eastern Africa" },
+        { "type": "region", "code": "017", "name": "Middle Africa" }
+      ],
+      "logo": { "type": "monogram", "initials": "KT", "color": "#8a6fc7" },
+      "founded": 1995,
+      "employeeRange": "250-500"
+    },
+    {
+      "id": "biz-023",
+      "name": "Anatolia Steel Works",
+      "industry": "Manufacturing",
+      "services": ["Structural steel production", "Rebar manufacturing", "Export logistics"],
+      "description": "Structural steel producer supplying rebar and fabricated steel to construction markets across the Eastern Mediterranean.",
+      "headquarters": { "countryIso3": "TUR", "countryName": "Turkey", "city": "Izmir", "coordinates": [27.14, 38.42], "subregionCode": "145", "subregionName": "Western Asia" },
+      "serviceCoverage": [
+        { "type": "region", "code": "145", "name": "Western Asia" },
+        { "type": "region", "code": "039", "name": "Southern Europe" }
+      ],
+      "logo": { "type": "monogram", "initials": "AS", "color": "#8a6fc7" },
+      "founded": 1963,
+      "employeeRange": "500-1000"
+    },
+    {
+      "id": "biz-024",
+      "name": "Prairie Precision Fabricators",
+      "industry": "Manufacturing",
+      "services": ["Agricultural equipment fabrication", "Sheet metal forming", "Powder coating"],
+      "description": "Fabricator of agricultural and heavy equipment components serving prairie-region manufacturers and dealerships.",
+      "headquarters": { "countryIso3": "CAN", "countryName": "Canada", "city": "Winnipeg", "coordinates": [-97.14, 49.9], "subregionCode": "021", "subregionName": "Northern America" },
+      "serviceCoverage": [
+        { "type": "region", "code": "021", "name": "Northern America" }
+      ],
+      "logo": { "type": "monogram", "initials": "PP", "color": "#8a6fc7" },
+      "founded": 1973,
+      "employeeRange": "100-250"
+    },
+
+    {
+      "id": "biz-025",
+      "name": "Lumen Cloud Systems",
+      "industry": "Technology",
+      "services": ["Cloud infrastructure hosting", "DevOps consulting", "Managed security operations"],
+      "description": "Managed cloud infrastructure provider running regional data centers and DevOps consulting for mid-market enterprises.",
+      "headquarters": { "countryIso3": "USA", "countryName": "United States", "city": "Austin", "coordinates": [-97.74, 30.27], "subregionCode": "021", "subregionName": "Northern America" },
+      "serviceCoverage": [
+        { "type": "region", "code": "021", "name": "Northern America" },
+        { "type": "region", "code": "029", "name": "Caribbean" },
+        { "type": "region", "code": "013", "name": "Central America" }
+      ],
+      "logo": { "type": "monogram", "initials": "LC", "color": "#48c7bf" },
+      "contact": { "website": "www.lumencloudsystems.example" },
+      "founded": 2011,
+      "employeeRange": "250-500"
+    },
+    {
+      "id": "biz-026",
+      "name": "Nebula Data Works",
+      "industry": "Technology",
+      "services": ["Data engineering", "Machine learning platforms", "Enterprise analytics"],
+      "description": "Data engineering and applied machine learning firm building analytics platforms for enterprise clients across South and Southeast Asia.",
+      "headquarters": { "countryIso3": "IND", "countryName": "India", "city": "Bengaluru", "coordinates": [77.59, 12.97], "subregionCode": "034", "subregionName": "Southern Asia" },
+      "serviceCoverage": [
+        { "type": "region", "code": "034", "name": "Southern Asia" },
+        { "type": "region", "code": "035", "name": "South-eastern Asia" }
+      ],
+      "logo": { "type": "monogram", "initials": "ND", "color": "#48c7bf" },
+      "founded": 2014,
+      "employeeRange": "500-1000"
+    },
+    {
+      "id": "biz-027",
+      "name": "Fjordlight Software",
+      "industry": "Technology",
+      "services": ["Enterprise SaaS development", "UX research", "Accessibility auditing"],
+      "description": "Enterprise SaaS studio known for accessibility-first product design across Nordic and continental European markets.",
+      "headquarters": { "countryIso3": "SWE", "countryName": "Sweden", "city": "Stockholm", "coordinates": [18.07, 59.33], "subregionCode": "154", "subregionName": "Northern Europe" },
+      "serviceCoverage": [
+        { "type": "region", "code": "154", "name": "Northern Europe" },
+        { "type": "region", "code": "155", "name": "Western Europe" }
+      ],
+      "logo": { "type": "monogram", "initials": "FS", "color": "#48c7bf" },
+      "contact": { "website": "www.fjordlightsoftware.example" },
+      "founded": 2009,
+      "employeeRange": "100-250"
+    },
+    {
+      "id": "biz-028",
+      "name": "Meridian AI Labs",
+      "industry": "Technology",
+      "services": ["Applied AI research", "Computer vision products", "Technical due diligence"],
+      "description": "Applied AI research group productizing computer vision models for logistics and agriculture clients across the Eastern Mediterranean.",
+      "headquarters": { "countryIso3": "ISR", "countryName": "Israel", "city": "Tel Aviv", "coordinates": [34.78, 32.08], "subregionCode": "145", "subregionName": "Western Asia" },
+      "serviceCoverage": [
+        { "type": "region", "code": "145", "name": "Western Asia" },
+        { "type": "region", "code": "039", "name": "Southern Europe" }
+      ],
+      "logo": { "type": "monogram", "initials": "MA", "color": "#48c7bf" },
+      "founded": 2016,
+      "employeeRange": "100-250"
+    },
+    {
+      "id": "biz-029",
+      "name": "Okapi Fintech Solutions",
+      "industry": "Technology",
+      "services": ["Mobile payments infrastructure", "Microlending platforms", "Regulatory compliance tooling"],
+      "description": "Mobile-first fintech platform powering payments and microlending for underbanked markets across East, Central, and Southern Africa.",
+      "headquarters": { "countryIso3": "KEN", "countryName": "Kenya", "city": "Nairobi", "coordinates": [36.82, -1.29], "subregionCode": "014", "subregionName": "Eastern Africa" },
+      "serviceCoverage": [
+        { "type": "region", "code": "014", "name": "Eastern Africa" },
+        { "type": "region", "code": "017", "name": "Middle Africa" },
+        { "type": "region", "code": "018", "name": "Southern Africa" }
+      ],
+      "logo": { "type": "monogram", "initials": "OF", "color": "#48c7bf" },
+      "founded": 2017,
+      "employeeRange": "250-500"
+    },
+    {
+      "id": "biz-030",
+      "name": "Southern Cross Analytics",
+      "industry": "Technology",
+      "services": ["Business intelligence platforms", "Data visualization", "Cloud migration"],
+      "description": "Business intelligence consultancy helping Australian and New Zealand enterprises modernize legacy reporting into cloud analytics platforms.",
+      "headquarters": { "countryIso3": "AUS", "countryName": "Australia", "city": "Melbourne", "coordinates": [144.96, -37.81], "subregionCode": "053", "subregionName": "Australia and New Zealand" },
+      "serviceCoverage": [
+        { "type": "region", "code": "053", "name": "Australia and New Zealand" }
+      ],
+      "logo": { "type": "monogram", "initials": "SC", "color": "#48c7bf" },
+      "founded": 2013,
+      "employeeRange": "100-250"
+    },
+
+    {
+      "id": "biz-031",
+      "name": "Meridian & Shaw Consulting",
+      "industry": "Professional Services",
+      "services": ["Strategy consulting", "Market entry advisory", "Operational due diligence"],
+      "description": "Strategy and market-entry advisory serving corporates expanding across European markets, headquartered in the City of London.",
+      "headquarters": { "countryIso3": "GBR", "countryName": "United Kingdom", "city": "London", "coordinates": [-0.13, 51.51], "subregionCode": "154", "subregionName": "Northern Europe" },
+      "serviceCoverage": [
+        { "type": "region", "code": "154", "name": "Northern Europe" },
+        { "type": "region", "code": "155", "name": "Western Europe" },
+        { "type": "region", "code": "039", "name": "Southern Europe" }
+      ],
+      "logo": { "type": "monogram", "initials": "MS", "color": "#a65c8a" },
+      "contact": { "website": "www.meridianandshaw.example" },
+      "founded": 1991,
+      "employeeRange": "250-500"
+    },
+    {
+      "id": "biz-032",
+      "name": "Continental Legal Partners",
+      "industry": "Professional Services",
+      "services": ["Corporate law", "Cross-border M&A advisory", "Regulatory compliance"],
+      "description": "Corporate law practice advising on cross-border transactions and regulatory compliance across Western and Eastern Europe.",
+      "headquarters": { "countryIso3": "DEU", "countryName": "Germany", "city": "Frankfurt", "coordinates": [8.68, 50.11], "subregionCode": "155", "subregionName": "Western Europe" },
+      "serviceCoverage": [
+        { "type": "region", "code": "155", "name": "Western Europe" },
+        { "type": "region", "code": "151", "name": "Eastern Europe" }
+      ],
+      "logo": { "type": "monogram", "initials": "CL", "color": "#a65c8a" },
+      "founded": 1978,
+      "employeeRange": "500-1000"
+    },
+    {
+      "id": "biz-033",
+      "name": "Equinox Advisory Group",
+      "industry": "Professional Services",
+      "services": ["Financial advisory", "Tax structuring", "Private equity due diligence"],
+      "description": "Financial and tax advisory group supporting private equity transactions across North America and the Caribbean.",
+      "headquarters": { "countryIso3": "USA", "countryName": "United States", "city": "New York", "coordinates": [-74.01, 40.71], "subregionCode": "021", "subregionName": "Northern America" },
+      "serviceCoverage": [
+        { "type": "region", "code": "021", "name": "Northern America" },
+        { "type": "region", "code": "029", "name": "Caribbean" }
+      ],
+      "logo": { "type": "monogram", "initials": "EA", "color": "#a65c8a" },
+      "contact": { "website": "www.equinoxadvisorygroup.example" },
+      "founded": 1985,
+      "employeeRange": "500-1000"
+    },
+    {
+      "id": "biz-034",
+      "name": "Horizon Risk & Assurance",
+      "industry": "Professional Services",
+      "services": ["Enterprise risk advisory", "Insurance broking", "Compliance auditing"],
+      "description": "Risk advisory and insurance broking firm serving multinational operators across the Gulf, South Asia, and North Africa.",
+      "headquarters": { "countryIso3": "ARE", "countryName": "United Arab Emirates", "city": "Dubai", "coordinates": [55.27, 25.2], "subregionCode": "145", "subregionName": "Western Asia" },
+      "serviceCoverage": [
+        { "type": "region", "code": "145", "name": "Western Asia" },
+        { "type": "region", "code": "034", "name": "Southern Asia" },
+        { "type": "region", "code": "015", "name": "Northern Africa" }
+      ],
+      "logo": { "type": "monogram", "initials": "HR", "color": "#a65c8a" },
+      "founded": 2003,
+      "employeeRange": "250-500"
+    },
+    {
+      "id": "biz-035",
+      "name": "Capeview Strategy Partners",
+      "industry": "Professional Services",
+      "services": ["Public sector advisory", "Infrastructure finance strategy", "Policy research"],
+      "description": "Public sector and infrastructure-finance advisory supporting governments and development agencies across Africa.",
+      "headquarters": { "countryIso3": "ZAF", "countryName": "South Africa", "city": "Cape Town", "coordinates": [18.42, -33.92], "subregionCode": "018", "subregionName": "Southern Africa" },
+      "serviceCoverage": [
+        { "type": "region", "code": "018", "name": "Southern Africa" },
+        { "type": "region", "code": "014", "name": "Eastern Africa" },
+        { "type": "region", "code": "017", "name": "Middle Africa" }
+      ],
+      "logo": { "type": "monogram", "initials": "CS", "color": "#a65c8a" },
+      "founded": 1999,
+      "employeeRange": "100-250"
+    },
+    {
+      "id": "biz-036",
+      "name": "Pacifica Talent Partners",
+      "industry": "Professional Services",
+      "services": ["Executive search", "Workforce planning", "HR outsourcing"],
+      "description": "Executive search and workforce-planning firm serving multinational employers expanding across island and mainland Southeast Asia.",
+      "headquarters": { "countryIso3": "PHL", "countryName": "Philippines", "city": "Manila", "coordinates": [120.98, 14.6], "subregionCode": "035", "subregionName": "South-eastern Asia" },
+      "serviceCoverage": [
+        { "type": "region", "code": "035", "name": "South-eastern Asia" },
+        { "type": "region", "code": "030", "name": "Eastern Asia" }
+      ],
+      "logo": { "type": "monogram", "initials": "PT", "color": "#a65c8a" },
+      "founded": 2007,
+      "employeeRange": "100-250"
+    },
+
+    {
+      "id": "biz-037",
+      "name": "Trident Marine Engineering",
+      "industry": "Marine Services",
+      "services": ["Vessel repair and drydocking", "Marine engineering consultancy", "Classification support"],
+      "description": "Marine engineering and drydock operator supporting commercial fleet maintenance across the Strait of Malacca shipping lanes.",
+      "headquarters": { "countryIso3": "SGP", "countryName": "Singapore", "city": "Singapore", "coordinates": [103.82, 1.35], "subregionCode": "035", "subregionName": "South-eastern Asia" },
+      "serviceCoverage": [
+        { "type": "region", "code": "035", "name": "South-eastern Asia" },
+        { "type": "region", "code": "034", "name": "Southern Asia" }
+      ],
+      "logo": { "type": "monogram", "initials": "TM", "color": "#4f8fa6" },
+      "contact": { "website": "www.tridentmarineeng.example" },
+      "founded": 1982,
+      "employeeRange": "250-500"
+    },
+    {
+      "id": "biz-038",
+      "name": "Nordsjø Offshore Services",
+      "industry": "Marine Services",
+      "services": ["Offshore platform logistics", "Subsea inspection", "Crew transfer operations"],
+      "description": "Offshore support vessel operator servicing North Sea platforms and subsea infrastructure from a Norwegian home port.",
+      "headquarters": { "countryIso3": "NOR", "countryName": "Norway", "city": "Bergen", "coordinates": [5.32, 60.39], "subregionCode": "154", "subregionName": "Northern Europe" },
+      "serviceCoverage": [
+        { "type": "region", "code": "154", "name": "Northern Europe" },
+        { "type": "region", "code": "155", "name": "Western Europe" }
+      ],
+      "logo": { "type": "monogram", "initials": "NO", "color": "#4f8fa6" },
+      "founded": 1990,
+      "employeeRange": "250-500"
+    },
+    {
+      "id": "biz-039",
+      "name": "Gulf Coast Vessel Works",
+      "industry": "Marine Services",
+      "services": ["Shipyard fabrication", "Barge construction", "Marine salvage"],
+      "description": "Gulf Coast shipyard building and repairing barges and workboats for the North American inland and coastal trades.",
+      "headquarters": { "countryIso3": "USA", "countryName": "United States", "city": "Houston", "coordinates": [-95.37, 29.76], "subregionCode": "021", "subregionName": "Northern America" },
+      "serviceCoverage": [
+        { "type": "region", "code": "021", "name": "Northern America" },
+        { "type": "region", "code": "029", "name": "Caribbean" }
+      ],
+      "logo": { "type": "monogram", "initials": "GC", "color": "#4f8fa6" },
+      "founded": 1958,
+      "employeeRange": "500-1000"
+    },
+    {
+      "id": "biz-040",
+      "name": "Pacific Atoll Marine Supply",
+      "industry": "Marine Services",
+      "services": ["Fishing fleet provisioning", "Marine parts distribution", "Small-craft repair"],
+      "description": "Marine provisioning and parts distributor supplying fishing fleets and inter-island vessels across the South Pacific.",
+      "headquarters": { "countryIso3": "FJI", "countryName": "Fiji", "city": "Suva", "coordinates": [178.44, -18.14], "subregionCode": "054", "subregionName": "Melanesia" },
+      "serviceCoverage": [
+        { "type": "region", "code": "054", "name": "Melanesia" },
+        { "type": "region", "code": "057", "name": "Micronesia" },
+        { "type": "region", "code": "061", "name": "Polynesia" }
+      ],
+      "logo": { "type": "monogram", "initials": "PA", "color": "#4f8fa6" },
+      "founded": 1993,
+      "employeeRange": "25-100"
+    },
+    {
+      "id": "biz-041",
+      "name": "Mediterranean Hull & Harbor Co.",
+      "industry": "Marine Services",
+      "services": ["Hull cleaning and coatings", "Harbor pilotage support", "Marine surveying"],
+      "description": "Harbor services and hull-maintenance contractor operating out of Piraeus, serving commercial traffic across the Eastern Mediterranean.",
+      "headquarters": { "countryIso3": "GRC", "countryName": "Greece", "city": "Piraeus", "coordinates": [23.64, 37.94], "subregionCode": "039", "subregionName": "Southern Europe" },
+      "serviceCoverage": [
+        { "type": "region", "code": "039", "name": "Southern Europe" },
+        { "type": "region", "code": "145", "name": "Western Asia" },
+        { "type": "region", "code": "015", "name": "Northern Africa" }
+      ],
+      "logo": { "type": "monogram", "initials": "MH", "color": "#4f8fa6" },
+      "contact": { "website": "www.medhullharbor.example" },
+      "founded": 1966,
+      "employeeRange": "100-250"
+    },
+    {
+      "id": "biz-042",
+      "name": "Southern Reef Maritime Group",
+      "industry": "Marine Services",
+      "services": ["Charter vessel operations", "Marine tourism logistics", "Port agency services"],
+      "description": "Charter and marine-tourism logistics operator supporting reef-adjacent ports across eastern Australia and the Coral Sea.",
+      "headquarters": { "countryIso3": "AUS", "countryName": "Australia", "city": "Brisbane", "coordinates": [153.03, -27.47], "subregionCode": "053", "subregionName": "Australia and New Zealand" },
+      "serviceCoverage": [
+        { "type": "region", "code": "053", "name": "Australia and New Zealand" },
+        { "type": "region", "code": "054", "name": "Melanesia" }
+      ],
+      "logo": { "type": "monogram", "initials": "SR", "color": "#4f8fa6" },
+      "founded": 2000,
+      "employeeRange": "25-100"
+    }
+  ]
+}
