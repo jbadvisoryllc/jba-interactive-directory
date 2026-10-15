@@ -7,7 +7,7 @@ import { businesses } from "@/data/businesses";
 import { Store } from "@/state/store";
 import type { FilterState } from "@/state/store";
 import { appConfig } from "@/config/app.config";
-import { filterBusinesses } from "@/filters/businessFilters";
+import { filterBusinesses, sortBusinesses } from "@/filters/businessFilters";
 
 const rootEl = document.getElementById("app");
 if (!rootEl) {
@@ -127,16 +127,17 @@ root.appendChild(mobileScrim);
 // --- Map init ---
 const { tokenConfigured, ready } = initMap(mapContainer, {
   businesses,
-  interactionCallbacks: {
-    onSelect: (subregionCode) => {
-      // Clicking a country on the map also applies it as a region filter,
-      // keeping sidebar filters and map navigation in agreement.
-      store.setState({ selectedRegions: new Set([subregionCode]), page: 1 });
-    },
-  },
+  // No interactionCallbacks here: clicking a country keeps its existing
+  // Checkpoint 2 behavior (camera fly + single-region highlight) without
+  // also mutating the directory's region filter, so existing map
+  // navigation isn't changed by this checkpoint.
   businessCallbacks: {
     onSelect: (businessId) => {
-      store.setState({ selectedBusinessId: businessId });
+      const state = store.getState();
+      const filtered = sortBusinesses(filterBusinesses(businesses, state), state.sort);
+      const index = filtered.findIndex((b) => b.id === businessId);
+      const page = index >= 0 ? Math.floor(index / appConfig.directory.pageSize) + 1 : state.page;
+      store.setState({ selectedBusinessId: businessId, page });
     },
   },
 });
