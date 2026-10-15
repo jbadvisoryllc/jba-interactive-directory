@@ -2,7 +2,7 @@
 
 An interactive, configurable global business directory demo built for **JB Advisory LLC**. Developed independently from any JB Advisory client systems or proprietary code.
 
-> **Status:** Checkpoint 2 (geographic map) complete. The map now renders real country/territory boundaries joined to all 22 UN M49 subregions, with hover and click-to-select region highlighting, labels, and zoom/global-view controls. Search, filters, and the business directory land in Checkpoint 3.
+> **Status:** Checkpoint 3 (business directory & interface) complete. On top of the Checkpoint 2 geographic map: a fictional 42-company business directory, a collapsible region/country/industry/service filter panel, a searchable/sortable/paginated directory with inline business detail, clustered map markers kept in sync with the directory, a Map View / List View toggle, and a mobile layout (bottom nav, slide-in filter drawer, pull-up directory sheet). Awaiting approval before Checkpoint 4.
 
 ## Stack
 
@@ -18,14 +18,14 @@ src/
   config/       app.config.ts — branding, map defaults, page size (edit this to retarget the app)
   theme/        tokens.css (CSS vars, approved palette) + palette.ts (same values for map code)
   data/geo/     UN M49 subregions, country->subregion mapping, generated boundary TopoJSON
-  data/         fictional business dataset (Checkpoint 2)
-  state/        shared filter/selection store (Checkpoint 2)
-  filters/      pure filter functions (Checkpoint 2)
-  map/          Mapbox init + style building
-  components/   UI components
+  data/         fictional business dataset + data model (Checkpoint 3)
+  state/        shared filter/selection store (Checkpoint 3)
+  filters/      pure filter/sort/paginate functions (Checkpoint 3)
+  map/          Mapbox init, style building, business marker clustering (Checkpoint 3)
+  components/   UI components (nav rail, filter panel, directory panel)
 scripts/
   build-geo.mjs — generates src/data/geo/countries.topo.json from Natural Earth (Checkpoint 2)
-tests/          geo data integrity tests
+tests/          geo data integrity, business dataset integrity, and filter-logic tests
 ```
 
 ## Local development
@@ -85,6 +85,28 @@ Country/territory → M49 subregion assignment lives in `src/data/geo/country-su
 - Hovering or clicking a country highlights its whole M49 subregion in turquoise (not just that one country) — region borders, not individual countries, are the unit of interaction.
 - Clicking a region flies the camera to its bounds. The "return to global view" control (next to zoom, top-right) resets the camera and clears the selection.
 - All subregions share the same neutral land color; turquoise is reserved for hover/selection, per the approved design — no rainbow region coloring.
+
+## Business directory (Checkpoint 3)
+
+- **Data model** (`src/data/business-types.ts`): each business has a single `headquarters` (country, city, coordinates, M49 subregion — what the map marker represents) and a separate `serviceCoverage` list of countries and/or whole M49 regions it serves. The two are independent by design: a business may be headquartered in one country and serve several regions. Filtering is **headquarters-based by default**, per the brief; `serviceCoverage` is modeled and shown in each business's detail view but isn't yet its own filter axis, to avoid adding interface complexity this checkpoint didn't ask for.
+- **Dataset** (`src/data/businesses.json`): 42 fictional companies across the 7 approved industries (Construction, Energy, Logistics, Manufacturing, Technology, Professional Services, Marine Services), headquartered across 21 of the 22 M49 subregions. Validated at load time against the same M49 mapping the map uses (`src/data/businesses.ts`), and covered by `tests/businesses-data.test.ts`.
+- **Filters**: region (multiselect, grouped by continent), country, industry, and service, each with live counts and a shared Reset. Counts reflect every other active filter, so unchecked options show what they'd add (standard faceted-search behavior).
+- **Directory**: search (name/city/country/industry/service), sort (name, founded), pagination, and an inline-expanding business card with services, service coverage, founded/employee facts, and contact info where available.
+- **Map sync**: business headquarters render as clustered markers (clusters split as you zoom in); selecting a business from either the map or the directory highlights and opens the same record in both, and jumps the directory to the page it's on.
+- **Views**: the nav rail's Map/Directory items double as a Map View (map + directory side by side) / List View (expanded multi-column directory, map hidden) toggle; filters persist across the switch.
+- **Mobile**: nav rail becomes a bottom bar; the filter panel becomes a slide-in drawer (Filters tab); the directory becomes a pull-up sheet in Map View and a full-screen view in List View (Directory tab).
+
+### Known limitations
+
+- Service coverage isn't yet a filter axis (by design — see above); it's visible in each business's detail view only.
+- The directory search/filter counts don't yet search within `serviceCoverage`.
+- No URL/deep-linking of filter or selection state yet (a refresh resets to the default view).
+- The mobile pull-up sheet has two fixed heights (peek/expanded) via its drag handle, not a free-drag gesture.
+- Logos are monogram placeholders, per the brief ("initially using professionally styled monograms"); no image/logo upload path exists yet.
+
+### Recommended next steps
+
+- Checkpoint 4 candidates: service-coverage as a secondary filter, URL-persisted state, a free-drag mobile sheet, and real logo images.
 
 ## Data disclosure
 
