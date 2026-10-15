@@ -88,9 +88,22 @@
   background: var(--jba-color-map-ocean);
 }
 
-.jba-map-container {
+/*
+ * Mapbox GL JS adds its own `mapboxgl-map` class to the container element
+ * we pass it, and mapbox-gl.css declares `.mapboxgl-map { position:
+ * relative }`. That rule has the same specificity as a single-class
+ * selector, and because mapbox-gl.css is imported (and therefore injected)
+ * after this stylesheet, it wins the cascade and silently overrides
+ * `position: absolute` below — collapsing this container to height 0
+ * (a block element with no content) and leaving the map entirely blank
+ * with no error. Qualifying with the parent selector raises specificity
+ * enough to win regardless of CSS injection order.
+ */
+.jba-workspace .jba-map-container {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .jba-token-notice {

@@ -50,17 +50,10 @@ export function initMap(container: HTMLElement, options: MapInitOptions = {}): M
 
   map.on("load", () => {
     const countries = loadCountryFeatures();
-    // eslint-disable-next-line no-console
-    console.log("[jba:debug] decoded country features:", countries.features.length);
     addCountryLayers(map, countries);
     const interactions = wireRegionInteractions(map, options.interactionCallbacks);
     map.addControl(new GlobalViewControl(() => interactions.clearSelection()), "top-right");
   });
-
-  // Temporary debug handle for live inspection during Checkpoint 2
-  // verification. Harmless to keep (common pattern for Mapbox GL apps);
-  // safe to remove once rendering is confirmed stable.
-  (window as unknown as { __jbaMap?: mapboxgl.Map }).__jbaMap = map;
 
   return { map, tokenConfigured };
 }
