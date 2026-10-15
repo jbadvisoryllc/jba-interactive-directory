@@ -110,3 +110,53 @@
 .jba-token-notice strong {
   color: var(--jba-color-danger);
 }
+
+/* --- Mapbox control theming (overrides Mapbox's default light UI) --- */
+.mapboxgl-ctrl-group {
+  background: var(--jba-color-panel);
+  border: 1px solid var(--jba-color-border);
+  box-shadow: none;
+  border-radius: var(--jba-radius-md);
+  overflow: hidden;
+}
+
+.mapboxgl-ctrl-group button {
+  width: 32px;
+  height: 32px;
+}
+
+.mapboxgl-ctrl-group button + button {
+  border-top: 1px solid var(--jba-color-border);
+}
+
+.mapboxgl-ctrl-icon {
+  filter: invert(1) brightness(1.6);
+}
+
+.jba-global-view-ctrl button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--jba-color-text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color var(--jba-transition-fast), background var(--jba-transition-fast);
+}
+
+.jba-global-view-ctrl button:hover {
+  color: var(--jba-color-accent);
+  background: var(--jba-color-panel-raised);
+}
+
+.mapboxgl-ctrl-attrib {
+  background: var(--jba-color-overlay-scrim) !important;
+}
+
+.mapboxgl-ctrl-attrib a {
+  color: var(--jba-color-text-secondary) !important;
+}
+
+.mapboxgl-canvas {
+  outline: none;
+}
